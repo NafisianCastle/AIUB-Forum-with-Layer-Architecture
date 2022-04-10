@@ -1,13 +1,10 @@
 ﻿using DAL.Database;
-using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace DAL.Repo
 {
-    public class PostRepo : IRepository<Post,int>
+    public class PostRepo : IRepository<Post, int>
     {
         private AIUB_ForumEntities db;
         public PostRepo(AIUB_ForumEntities db)
@@ -24,11 +21,9 @@ namespace DAL.Repo
         {
             var oobj = db.Posts.FirstOrDefault(x => x.PostId == id);
             if (oobj == null) { return false; }
-            
+
             db.Posts.Remove(oobj);
-            if (db.SaveChanges() == 1) { return true; }
-            return false;
-            
+            return db.SaveChanges() != 0;
         }
 
         public bool Edit(Post obj)

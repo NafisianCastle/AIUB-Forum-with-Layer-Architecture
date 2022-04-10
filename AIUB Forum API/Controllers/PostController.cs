@@ -1,11 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
+﻿using BLL.Entities;
+using BLL.Services;
 using System.Net;
 using System.Net.Http;
 using System.Web.Http;
-using BLL.Entities;
-using BLL.Services;
 
 namespace AIUB_Forum_API.Controllers
 {
@@ -24,7 +21,7 @@ namespace AIUB_Forum_API.Controllers
             {
                 return Request.CreateResponse(HttpStatusCode.NotFound, "Not found");
             }
-            
+
         }
         [HttpGet]
         [Route("api/Post/getall/")]
@@ -38,7 +35,7 @@ namespace AIUB_Forum_API.Controllers
             {
                 return Request.CreateResponse(HttpStatusCode.NotFound, "Not found");
             }
-            
+
         }
         [HttpPost]
         [Route("api/Post/add")]

@@ -1,9 +1,6 @@
 ﻿using DAL.Database;
-using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace DAL.Repo
 {
@@ -24,11 +21,14 @@ namespace DAL.Repo
         public bool Delete(int id)
         {
             var oobj = db.AnswerComments.FirstOrDefault(x => x.AnsCmntId == id);
-            if (oobj == null) return false;
+            if (oobj == null)
+            {
+                return false;
+            }
+
             db.AnswerComments.Remove(oobj);
 
-            if (db.SaveChanges() == 1) { return true; }
-            return false;
+            return db.SaveChanges() == 1;
         }
 
         public bool Edit(AnswerComment obj)

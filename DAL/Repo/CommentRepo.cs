@@ -1,13 +1,10 @@
 ﻿using DAL.Database;
-using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace DAL.Repo
 {
-    public class CommentRepo : IRepository<Comment,int>
+    public class CommentRepo : IRepository<Comment, int>
     {
         private AIUB_ForumEntities db;
         public CommentRepo(AIUB_ForumEntities db)
@@ -23,10 +20,13 @@ namespace DAL.Repo
         public bool Delete(int id)
         {
             var oobj = db.Comments.FirstOrDefault(x => x.CommentId == id);
-            if (oobj == null) return false;
+            if (oobj == null)
+            {
+                return false;
+            }
+
             db.Comments.Remove(oobj);
-            if (db.SaveChanges() == 1) { return true; }
-            return false;
+            return db.SaveChanges() == 1;
         }
 
         public bool Edit(Comment obj)

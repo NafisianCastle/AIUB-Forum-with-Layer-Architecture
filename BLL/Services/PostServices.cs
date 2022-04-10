@@ -2,11 +2,7 @@
 using BLL.Entities;
 using DAL;
 using DAL.Database;
-using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace BLL.Services
 {
@@ -34,7 +30,7 @@ namespace BLL.Services
 
         {
             return DataAccessFactory.PostDataAccess().Delete(id);
-            
+
         }
         public static bool Add(PostModel ppp)
         {
