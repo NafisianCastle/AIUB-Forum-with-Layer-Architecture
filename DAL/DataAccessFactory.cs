@@ -1,15 +1,21 @@
 ﻿using DAL.Database;
 using DAL.Repo;
+using System;
 
 namespace DAL
 {
     public class DataAccessFactory
     {
         static AIUB_ForumEntities _db = new AIUB_ForumEntities();
-        public static IRepository<User, int, string> UserDataAccess()
+        public static IRepository<Admin, int> AdminDataAccess()
         {
-            return new UserRepo(_db);
+            return new AdminRepo(_db);
         }
+        public static IRepository<Moderator, int> ModeratorDataAccess()
+        {
+            return new ModeratorRepo(_db);
+        }
+        
         public static IRepository<Post, int> PostDataAccess()
         {
             return new PostRepo(_db);
@@ -46,14 +52,5 @@ namespace DAL
         {
             return new VoteRepo(_db);
         }
-
-
-
-        public static IAuth AuthAccess()
-        {
-            return new UserRepo(_db);
-        }
-
-
     }
 }
