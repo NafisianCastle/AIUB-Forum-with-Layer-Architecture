@@ -42,7 +42,7 @@ namespace AIUB_Forum_API.Controllers
         {
             try
             {
-                return Request.CreateResponse(HttpStatusCode.OK, BadgeService.AddBadge(badge) ? "Deleted" : "not Deleted");
+                return Request.CreateResponse(HttpStatusCode.OK, BadgeService.AddBadge(badge) ? "Created" : "not created");
             }
             catch
             {
@@ -55,7 +55,7 @@ namespace AIUB_Forum_API.Controllers
         {
             try
             {
-                return Request.CreateResponse(HttpStatusCode.OK, BadgeService.EditBadge(badge) ? "Deleted" : "not Deleted");
+                return Request.CreateResponse(HttpStatusCode.OK, BadgeService.EditBadge(badge) ? "Edited" : "not edited");
             }
             catch
             {
