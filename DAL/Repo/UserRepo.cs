@@ -1,10 +1,11 @@
-﻿using DAL.Database;
+﻿using System;
+using DAL.Database;
 using System.Collections.Generic;
 using System.Linq;
 
 namespace DAL.Repo
 {
-    public class UserRepo : IRepository<User, int, string>, IAuth<bool>
+    public class UserRepo : IRepository<User, int, string>
     {
         private readonly AIUB_ForumEntities _db;
 
@@ -55,16 +56,6 @@ namespace DAL.Repo
         public User Get(int id)
         {
             return _db.Users.FirstOrDefault(e => e.UserId == id);
-        }
-
-
-        public bool Authenticate(string email, string pass)
-        {
-            var data = (from e in _db.Users
-                        where e.Password.Equals(pass) &&
-                              e.Email.Equals(email)
-                        select e).FirstOrDefault();
-            return data != null;
         }
     }
 }

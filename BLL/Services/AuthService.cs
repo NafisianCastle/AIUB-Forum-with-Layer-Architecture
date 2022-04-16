@@ -1,24 +1,19 @@
-﻿using BLL.Entities;
-using DAL;
+﻿using DAL;
 
 namespace BLL.Services
 {
-    public class AuthService
+    public static class AuthService
     {
-        public static TokenModel Authenticate(string uname, string pass)
-        {
-            var token = DataAccessFactory.AuthDataAccess().Authenticate(uname, pass);
-            //create tokenModel and map to token model
-            return token != null ? new TokenModel() { Tkey = token.Tkey, CreationDate = token.CreationDate, ExpireDate = token.ExpireDate } : null;
+        public static dynamic Authenticate(string email, string pass) {
+            var token=  DataAccessFactory.AuthDataAccess().Authenticate(email, pass);
+            return token;
         }
         public static bool ValidateToken(string key)
         {
             var token = DataAccessFactory.TokenDataAccess().Get(key);
-            return token != null && token.ExpireDate == null;
-        }
-        public static bool Logout(string token)
-        {
-            return DataAccessFactory.AuthDataAccess().Logout(token);
+            if (token !=null && token.ExpireDate == null) return true;
+            return false;
+
         }
     }
 }

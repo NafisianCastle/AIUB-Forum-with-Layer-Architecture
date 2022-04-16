@@ -1,9 +1,7 @@
 ﻿namespace DAL
 {
-    public interface IAuth<out TX>
+    public interface IAuth<X>
     {
-        TX Authenticate(string uname, string pass);
-        bool ValidateToken(string token);
-        bool Logout(string token);
+        X Authenticate(string username, string password);
     }
 }

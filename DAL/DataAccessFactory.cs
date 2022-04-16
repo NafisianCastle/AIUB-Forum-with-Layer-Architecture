@@ -1,5 +1,6 @@
 ﻿using DAL.Database;
 using DAL.Repo;
+using DAL.Repos;
 
 namespace DAL
 {
@@ -54,17 +55,11 @@ namespace DAL
         {
             return new VoteRepo(Db);
         }
-        public static IAuth<bool> AuthAccess()
-        {
-            return new UserRepo(Db);
+        public static IAuth<Token> AuthDataAccess() {
+            return new AuthRepo(Db);
         }
-        public static IAuth<Token> AuthDataAccess()
-        {
-            return new TokenRepo(Db);
-        }
-        public static IRepository<Token, string> TokenDataAccess()
-        {
-            return new TokenRepo(Db);
+        public static IRepository<Token,string> TokenDataAccess() {
+            return new AuthRepo(Db);
         }
     }
 }

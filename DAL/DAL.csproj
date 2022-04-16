@@ -112,6 +112,7 @@
     <Compile Include="Repo\AdminRepo.cs" />
     <Compile Include="Repo\AnswerCommentRepo.cs" />
     <Compile Include="Repo\AnswerRepo.cs" />
+    <Compile Include="Repo\AuthRepo.cs" />
     <Compile Include="Repo\BadgeRepo.cs" />
     <Compile Include="Repo\CommentRepo.cs" />
     <Compile Include="Repo\CompanyRepo.cs" />
@@ -119,7 +120,6 @@
     <Compile Include="Repo\JobRepo.cs" />
     <Compile Include="Repo\ModeratorRepo.cs" />
     <Compile Include="Repo\PostRepo.cs" />
-    <Compile Include="Repo\TokenRepo.cs" />
     <Compile Include="Repo\UserRepo.cs" />
     <Compile Include="Repo\VoteRepo.cs" />
   </ItemGroup>
