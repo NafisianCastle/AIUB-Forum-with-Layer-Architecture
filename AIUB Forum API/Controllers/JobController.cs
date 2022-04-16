@@ -1,10 +1,10 @@
-﻿using BLL.Entities;
-using BLL.Services;
-using System.Net;
+﻿using System.Net;
 using System.Net.Http;
 using System.Web.Http;
+using BLL.Entities;
+using BLL.Services;
 
-namespace AIUB_Web_Api.Controllers
+namespace AIUB_Forum_API.Controllers
 {
     public class JobController : ApiController
     {

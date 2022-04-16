@@ -1,26 +1,26 @@
-﻿using DAL.Database;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using DAL.Database;
 
-namespace DAL.Repos
+namespace DAL.Repo
 {
     public class AuthRepo : IRepository<Token, string>, IAuth<Token>
     {
-        AIUB_ForumEntities db;
+        readonly AIUB_ForumEntities _db;
         public AuthRepo(AIUB_ForumEntities db)
         {
-            this.db = db;
+            this._db = db;
         }
         public bool Add(Token obj)
         {
-            db.Tokens.Add(obj);
-            return db.SaveChanges() != 0;
+            _db.Tokens.Add(obj);
+            return _db.SaveChanges() != 0;
         }
 
         public Token Authenticate(string username, string password)
         {
-            var user = db.Users.FirstOrDefault(u => u.Username.Equals(username) && u.Password.Equals(password));
+            var user = _db.Users.FirstOrDefault(u => u.Username.Equals(username) && u.Password.Equals(password));
             if (user == null) return null;
             var token = new Token
             {
@@ -44,7 +44,7 @@ namespace DAL.Repos
 
         public Token Get(string id)
         {
-            return db.Tokens.FirstOrDefault(x => x.Tkey.Equals(id));
+            return _db.Tokens.FirstOrDefault(x => x.Tkey.Equals(id));
         }
 
         public List<Token> Get()

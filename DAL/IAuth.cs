@@ -1,7 +1,7 @@
 ﻿namespace DAL
 {
-    public interface IAuth<X>
+    public interface IAuth<TX>
     {
-        X Authenticate(string username, string password);
+        TX Authenticate(string username, string password);
     }
 }
