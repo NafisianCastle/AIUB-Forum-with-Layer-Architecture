@@ -15,7 +15,10 @@ namespace DAL
         {
             return new ModeratorRepo(_db);
         }
-        
+        public static IRepository<User, int,string> UserDataAccess()
+        {
+            return new UserRepo(_db);
+        }
         public static IRepository<Post, int> PostDataAccess()
         {
             return new PostRepo(_db);
