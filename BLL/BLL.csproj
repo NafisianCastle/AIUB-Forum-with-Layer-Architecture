@@ -82,7 +82,6 @@
     <Compile Include="Services\JobService.cs" />
     <Compile Include="Services\ModeratorService.cs" />
     <Compile Include="Services\PostServices.cs" />
-    <Compile Include="Services\TokenService.cs" />
     <Compile Include="Services\UserService.cs" />
     <Compile Include="Services\VoteService.cs" />
   </ItemGroup>

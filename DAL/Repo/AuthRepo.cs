@@ -7,7 +7,7 @@ namespace DAL.Repo
 {
     public class AuthRepo : IRepository<Token, string>, IAuth<Token>
     {
-        readonly AIUB_ForumEntities _db;
+        private readonly AIUB_ForumEntities _db;
         public AuthRepo(AIUB_ForumEntities db)
         {
             this._db = db;
@@ -18,9 +18,9 @@ namespace DAL.Repo
             return _db.SaveChanges() != 0;
         }
 
-        public Token Authenticate(string username, string password)
+        public Token Authenticate(string email, string password)
         {
-            var user = _db.Users.FirstOrDefault(u => u.Username.Equals(username) && u.Password.Equals(password));
+            var user = _db.Users.FirstOrDefault(u => u.Email.Equals(email) && u.Password.Equals(password));
             if (user == null) return null;
             var token = new Token
             {
