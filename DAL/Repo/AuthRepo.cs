@@ -7,7 +7,7 @@ namespace DAL.Repo
 {
     public class AuthRepo : IRepository<Token, string>, IAuth<Token>
     {
-        readonly AIUB_ForumEntities _db;
+        private readonly AIUB_ForumEntities _db;
         public AuthRepo(AIUB_ForumEntities db)
         {
             this._db = db;
@@ -20,26 +20,31 @@ namespace DAL.Repo
 
         public Token Authenticate(string email, string password)
         {
-            var user = _db.Users.FirstOrDefault(u => u.Email.Equals(email) && u.Password.Equals(password));
-            if (user == null) return null;
+            var data = _db.Users.FirstOrDefault(x => x.Email.Equals(email) && x.Password.Equals(password));
+            if (data == null) return null;
+            var g = Guid.NewGuid();
+            var t = g.ToString();
             var token = new Token
             {
-                Tkey = Guid.NewGuid().ToString(),
+                Tkey = t,
                 CreationDate = DateTime.Now,
-                ExpireDate = null,
-                UserId = user.UserId
+                UserId = data.UserId,
+                ExpireDate = null
             };
-            return Add(token) ? token : null;
+            return this.Add(token) ? token : null;
         }
 
-        public bool Delete(string id)
+        public bool Delete(string token)
         {
-            throw new NotImplementedException();
+            _db.Tokens.Remove(_db.Tokens.FirstOrDefault(e => e.Tkey.Equals(token)) ?? throw new InvalidOperationException());
+            return _db.SaveChanges() != 0;
         }
 
-        public bool Edit(Token obj)
+        public bool Edit(Token e)
         {
-            throw new NotImplementedException();
+            var token = _db.Tokens.FirstOrDefault(en => en.Tkey.Equals(e.Tkey));
+            _db.Entry(token).CurrentValues.SetValues(e);
+            return _db.SaveChanges() != 0;
         }
 
         public Token Get(string id)
@@ -49,7 +54,7 @@ namespace DAL.Repo
 
         public List<Token> Get()
         {
-            throw new NotImplementedException();
+            return _db.Tokens.ToList();
         }
     }
 }
