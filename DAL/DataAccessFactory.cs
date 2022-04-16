@@ -3,7 +3,7 @@ using DAL.Repo;
 
 namespace DAL
 {
-    public class DataAccessFactory
+    public static class DataAccessFactory
     {
         private static readonly AIUB_ForumEntities Db = new AIUB_ForumEntities();
         public static IRepository<Admin, int> AdminDataAccess()
