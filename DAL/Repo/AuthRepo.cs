@@ -7,7 +7,7 @@ namespace DAL.Repo
 {
     public class AuthRepo : IRepository<Token, string>, IAuth<Token>
     {
-        private readonly AIUB_ForumEntities _db;
+        readonly AIUB_ForumEntities _db;
         public AuthRepo(AIUB_ForumEntities db)
         {
             this._db = db;

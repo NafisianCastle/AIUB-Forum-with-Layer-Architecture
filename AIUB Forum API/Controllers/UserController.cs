@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Net;
 using System.Net.Http;
 using System.Web.Http;
+using AIUB_Forum_API.Auth;
 
 namespace AIUB_Forum_API.Controllers
 {
@@ -11,6 +12,7 @@ namespace AIUB_Forum_API.Controllers
     {
         [Route("api/users")]
         [HttpGet]
+        [AdminAccess]
         public HttpResponseMessage GetUsers()
         {
             try

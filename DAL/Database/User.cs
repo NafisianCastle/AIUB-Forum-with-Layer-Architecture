@@ -14,7 +14,7 @@ namespace DAL.Database
     
     public partial class User
     {
-        public User()
+        public User(object unknown)
         {
             this.Admins = new HashSet<Admin>();
             this.AnswerComments = new HashSet<AnswerComment>();
