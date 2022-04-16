@@ -59,7 +59,7 @@ namespace DAL.Repo
 
         public List<Token> Get()
         {
-            throw new NotImplementedException();
+            return _db.Tokens.ToList();
         }
     }
 }
