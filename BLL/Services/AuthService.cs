@@ -11,9 +11,7 @@ namespace BLL.Services
         public static bool ValidateToken(string key)
         {
             var token = DataAccessFactory.TokenDataAccess().Get(key);
-            if (token !=null && token.ExpireDate == null) return true;
-            return false;
-
+            return token !=null && token.ExpireDate == null;
         }
     }
 }

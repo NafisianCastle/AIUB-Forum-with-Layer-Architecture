@@ -4,7 +4,7 @@ using System.Net;
 using System.Net.Http;
 using System.Web.Http;
 
-namespace Presentation_WebAPI.Controllers
+namespace AIUB_Forum_API.Controllers
 {
     public class AuthController : ApiController
     {
@@ -14,7 +14,7 @@ namespace Presentation_WebAPI.Controllers
         {
             dynamic token = AuthService.Authenticate(login.Email, login.Password);
             return token != null
-                ? Request.CreateResponse(HttpStatusCode.OK, new {Tkey = token.Tkey, CreationDate = token.CreationDate})
+                ? Request.CreateResponse(HttpStatusCode.OK, new { token.Tkey, token.CreationDate})
                 : Request.CreateResponse(HttpStatusCode.NotFound, new {Msg = "User Not found"});
         }
     }
