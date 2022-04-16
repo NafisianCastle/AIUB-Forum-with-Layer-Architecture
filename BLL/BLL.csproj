@@ -53,6 +53,7 @@
     <Compile Include="Entities\CompanyModel.cs" />
     <Compile Include="Entities\JobModel.cs" />
     <Compile Include="Entities\JobPostModel.cs" />
+    <Compile Include="Entities\LoginModel.cs" />
     <Compile Include="Entities\ModeratorModel.cs" />
     <Compile Include="Entities\PostModel.cs" />
     <Compile Include="Entities\PostProperty.cs" />
@@ -73,6 +74,7 @@
     <Compile Include="Services\AdminService.cs" />
     <Compile Include="Services\AnswerCommentServices.cs" />
     <Compile Include="Services\AnswerServices.cs" />
+    <Compile Include="Services\AuthService.cs" />
     <Compile Include="Services\BadgeService.cs" />
     <Compile Include="Services\CommentServices.cs" />
     <Compile Include="Services\CompanyService.cs" />

@@ -8,6 +8,10 @@ namespace BLL.Services
 {
     public class UserService
     {
+        public static bool AuthenticateUser(string uname, string pass) {
+            var  rt = DataAccessFactory.AuthAccess().Authenticate(uname, pass);
+            return rt;
+        }
         public static List<UserModel> GetAllUsers()
         {
             var config = new MapperConfiguration(c =>
