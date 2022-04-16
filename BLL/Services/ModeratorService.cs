@@ -2,7 +2,6 @@
 using BLL.Entities;
 using DAL;
 using DAL.Database;
-using System;
 using System.Collections.Generic;
 
 namespace BLL.Services
@@ -35,7 +34,7 @@ namespace BLL.Services
             return data;
         }
 
-        
+
         public static void AddModerator(ModeratorModel u)
         {
             var config = new MapperConfiguration(c =>

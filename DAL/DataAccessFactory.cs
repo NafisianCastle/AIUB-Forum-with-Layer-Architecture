@@ -1,6 +1,5 @@
 ﻿using DAL.Database;
 using DAL.Repo;
-using System;
 
 namespace DAL
 {
@@ -15,7 +14,7 @@ namespace DAL
         {
             return new ModeratorRepo(_db);
         }
-        public static IRepository<User, int,string> UserDataAccess()
+        public static IRepository<User, int, string> UserDataAccess()
         {
             return new UserRepo(_db);
         }
