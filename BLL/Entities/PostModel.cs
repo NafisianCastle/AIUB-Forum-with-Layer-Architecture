@@ -9,7 +9,7 @@ namespace BLL.Entities
         public Nullable<System.DateTime> ModifyDate { get; set; }
         public Nullable<System.DateTime> DeleteDate { get; set; }
         public int Score { get; set; }
-        public int views { get; set; }
+        public int Views { get; set; }
         public string Body { get; set; }
         public int UserId { get; set; }
         public string Title { get; set; }

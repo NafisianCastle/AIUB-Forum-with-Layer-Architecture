@@ -6,7 +6,7 @@ namespace DAL.Repo
 {
     public class ModeratorRepo : IRepository<Moderator, int>
     {
-        private AIUB_ForumEntities _db;
+        private readonly AIUB_ForumEntities _db;
 
         public ModeratorRepo(AIUB_ForumEntities db)
         {

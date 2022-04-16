@@ -155,8 +155,8 @@
     <Property Name="UserId" Type="Int32" Nullable="false" />
     <Property Name="Tkey" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
     <Property Name="CreationDate" Type="DateTime" Nullable="false" Precision="3" />
-    <Property Name="DeletionDate" Type="DateTime" Precision="3" />
     <NavigationProperty Name="User" Relationship="Self.FK_Tokens_User" FromRole="Tokens" ToRole="User" />
+    <Property Name="ExpireDate" Type="DateTime" Precision="3" />
   </EntityType>
   <EntityType Name="User">
     <Key>

@@ -131,7 +131,7 @@
     <Property Name="UserId" Type="int" Nullable="false" />
     <Property Name="Tkey" Type="varchar" MaxLength="10" Nullable="false" />
     <Property Name="CreationDate" Type="datetime" Nullable="false" />
-    <Property Name="DeletionDate" Type="datetime" />
+    <Property Name="ExpireDate" Type="datetime" />
   </EntityType>
   <EntityType Name="User">
     <Key>

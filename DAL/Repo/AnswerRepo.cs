@@ -6,44 +6,44 @@ namespace DAL.Repo
 {
     public class AnswerRepo : IRepository<Answer, int>
     {
-        private AIUB_ForumEntities db;
+        private readonly AIUB_ForumEntities _db;
         public AnswerRepo(AIUB_ForumEntities db)
         {
-            this.db = db;
+            this._db = db;
         }
         public bool Add(Answer obj)
         {
-            db.Answers.Add(obj);
-            return db.SaveChanges() != 0;
+            _db.Answers.Add(obj);
+            return _db.SaveChanges() != 0;
         }
 
         public bool Delete(int id)
         {
-            var oobj = db.Answers.FirstOrDefault(x => x.AnsId == id);
+            var oobj = _db.Answers.FirstOrDefault(x => x.AnsId == id);
             if (oobj == null)
             {
                 return false;
             }
 
-            db.Answers.Remove(oobj);
-            return db.SaveChanges() == 1;
+            _db.Answers.Remove(oobj);
+            return _db.SaveChanges() == 1;
         }
 
         public bool Edit(Answer obj)
         {
-            var oobj = db.Answers.FirstOrDefault(x => x.AnsId == obj.AnsId);
-            db.Entry(oobj).CurrentValues.SetValues(obj);
-            return db.SaveChanges() != 0;
+            var oobj = _db.Answers.FirstOrDefault(x => x.AnsId == obj.AnsId);
+            _db.Entry(oobj).CurrentValues.SetValues(obj);
+            return _db.SaveChanges() != 0;
         }
 
         public Answer Get(int id)
         {
-            return db.Answers.FirstOrDefault(x => x.AnsId == id);
+            return _db.Answers.FirstOrDefault(x => x.AnsId == id);
         }
 
         public List<Answer> Get()
         {
-            return db.Answers.ToList();
+            return _db.Answers.ToList();
         }
     }
 }

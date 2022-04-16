@@ -6,7 +6,7 @@ namespace DAL.Repo
 {
     public class AdminRepo : IRepository<Admin, int>
     {
-        private AIUB_ForumEntities _db;
+        private readonly AIUB_ForumEntities _db;
 
         public AdminRepo(AIUB_ForumEntities db)
         {

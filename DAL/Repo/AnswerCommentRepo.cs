@@ -6,46 +6,46 @@ namespace DAL.Repo
 {
     public class AnswerCommentRepo : IRepository<AnswerComment, int>
     {
-        private AIUB_ForumEntities db;
+        private readonly AIUB_ForumEntities _db;
         public AnswerCommentRepo(AIUB_ForumEntities db)
         {
-            this.db = db;
+            this._db = db;
         }
 
         public bool Add(AnswerComment obj)
         {
-            db.AnswerComments.Add(obj);
-            return db.SaveChanges() != 0;
+            _db.AnswerComments.Add(obj);
+            return _db.SaveChanges() != 0;
         }
 
         public bool Delete(int id)
         {
-            var oobj = db.AnswerComments.FirstOrDefault(x => x.AnsCmntId == id);
+            var oobj = _db.AnswerComments.FirstOrDefault(x => x.AnsCmntId == id);
             if (oobj == null)
             {
                 return false;
             }
 
-            db.AnswerComments.Remove(oobj);
+            _db.AnswerComments.Remove(oobj);
 
-            return db.SaveChanges() == 1;
+            return _db.SaveChanges() == 1;
         }
 
         public bool Edit(AnswerComment obj)
         {
-            var oobj = db.AnswerComments.FirstOrDefault(x => x.AnsCmntId == obj.AnsCmntId);
-            db.Entry(oobj).CurrentValues.SetValues(obj);
-            return db.SaveChanges() != 0;
+            var oobj = _db.AnswerComments.FirstOrDefault(x => x.AnsCmntId == obj.AnsCmntId);
+            _db.Entry(oobj).CurrentValues.SetValues(obj);
+            return _db.SaveChanges() != 0;
         }
 
         public AnswerComment Get(int id)
         {
-            return db.AnswerComments.FirstOrDefault(x => x.AnsCmntId == id);
+            return _db.AnswerComments.FirstOrDefault(x => x.AnsCmntId == id);
         }
 
         public List<AnswerComment> Get()
         {
-            return db.AnswerComments.ToList();
+            return _db.AnswerComments.ToList();
         }
     }
 }

@@ -2,7 +2,7 @@
 
 namespace BLL.Entities
 {
-    class PostProperty
+    internal class PostProperty
     {
         public List<AnswerModel> Answers { get; set; }
         public List<CommentModel> Comments { get; set; }

@@ -27,17 +27,17 @@ namespace AIUB_Web_Api.Controllers
 
         [Route("api/Company/create")]
         [HttpPost]
-        public HttpResponseMessage Create(CompanyModel Company)
+        public HttpResponseMessage Create(CompanyModel company)
         {
-            CompanyService.Add(Company);
+            CompanyService.Add(company);
             return Request.CreateResponse(HttpStatusCode.OK, "Created");
         }
 
         [Route("api/Company/edit")]
         [HttpPost]
-        public HttpResponseMessage Edit(CompanyModel Company)
+        public HttpResponseMessage Edit(CompanyModel company)
         {
-            CompanyService.Edit(Company);
+            CompanyService.Edit(company);
             return Request.CreateResponse(HttpStatusCode.OK, "Edited");
         }
 

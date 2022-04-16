@@ -26,17 +26,17 @@ namespace AIUB_Web_Api.Controllers
 
         [Route("api/Job/create")]
         [HttpPost]
-        public HttpResponseMessage Create(JobModel Job)
+        public HttpResponseMessage Create(JobModel job)
         {
-            JobService.Add(Job);
+            JobService.Add(job);
             return Request.CreateResponse(HttpStatusCode.OK, "Created");
         }
 
         [Route("api/Job/edit")]
         [HttpPost]
-        public HttpResponseMessage Edit(JobModel Job)
+        public HttpResponseMessage Edit(JobModel job)
         {
-            JobService.Edit(Job);
+            JobService.Edit(job);
             return Request.CreateResponse(HttpStatusCode.OK, "Edited");
         }
 

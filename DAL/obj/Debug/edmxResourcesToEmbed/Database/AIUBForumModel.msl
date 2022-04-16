@@ -138,11 +138,11 @@
     <EntitySetMapping Name="Tokens">
       <EntityTypeMapping TypeName="AIUBForumModel.Token">
         <MappingFragment StoreEntitySet="Tokens">
+          <ScalarProperty Name="ExpireDate" ColumnName="ExpireDate" />
           <ScalarProperty Name="Id" ColumnName="Id" />
           <ScalarProperty Name="UserId" ColumnName="UserId" />
           <ScalarProperty Name="Tkey" ColumnName="Tkey" />
           <ScalarProperty Name="CreationDate" ColumnName="CreationDate" />
-          <ScalarProperty Name="DeletionDate" ColumnName="DeletionDate" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
