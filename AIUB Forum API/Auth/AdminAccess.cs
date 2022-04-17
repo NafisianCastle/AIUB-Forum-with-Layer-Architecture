@@ -1,12 +1,12 @@
-﻿using System.Net;
+﻿using BLL.Services;
+using System.Net;
 using System.Net.Http;
 using System.Web.Http.Controllers;
 using System.Web.Http.Filters;
-using BLL.Services;
 
 namespace AIUB_Forum_API.Auth
 {
-    public class AdminAccess:AuthorizationFilterAttribute
+    public class AdminAccess : AuthorizationFilterAttribute
     {
         public override void OnAuthorization(HttpActionContext actionContext)
         {
@@ -15,8 +15,10 @@ namespace AIUB_Forum_API.Auth
             {
                 actionContext.Response = actionContext.Request.CreateResponse(HttpStatusCode.NotFound, "No token supplied");
             }
-            else {
-                if (!AuthService.ValidateToken(token.ToString())) {
+            else
+            {
+                if (!AuthService.ValidateToken(token.ToString()))
+                {
                     actionContext.Response = actionContext.Request.CreateResponse(HttpStatusCode.Forbidden, "Token Expired");
                 }
             }

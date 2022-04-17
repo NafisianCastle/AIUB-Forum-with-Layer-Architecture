@@ -54,10 +54,12 @@ namespace DAL
         {
             return new VoteRepo(Db);
         }
-        public static IAuth<Token> AuthDataAccess() {
+        public static IAuth<Token> AuthDataAccess()
+        {
             return new AuthRepo(Db);
         }
-        public static IRepository<Token,string> TokenDataAccess() {
+        public static IRepository<Token, string> TokenDataAccess()
+        {
             return new AuthRepo(Db);
         }
     }

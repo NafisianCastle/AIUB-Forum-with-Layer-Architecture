@@ -1,5 +1,4 @@
-﻿using System;
-using DAL.Database;
+﻿using DAL.Database;
 using System.Collections.Generic;
 using System.Linq;
 

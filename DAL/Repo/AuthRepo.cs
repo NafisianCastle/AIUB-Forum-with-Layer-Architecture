@@ -1,7 +1,7 @@
-﻿using System;
+﻿using DAL.Database;
+using System;
 using System.Collections.Generic;
 using System.Linq;
-using DAL.Database;
 
 namespace DAL.Repo
 {
@@ -21,7 +21,11 @@ namespace DAL.Repo
         public Token Authenticate(string email, string password)
         {
             var data = _db.Users.FirstOrDefault(x => x.Email.Equals(email) && x.Password.Equals(password));
-            if (data == null) return null;
+            if (data == null)
+            {
+                return null;
+            }
+
             var g = Guid.NewGuid();
             var t = g.ToString();
             var token = new Token
