@@ -125,6 +125,8 @@
   <ItemGroup>
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Auth\AdminAccess.cs" />
+    <Compile Include="Auth\ModeratorAccess.cs" />
+    <Compile Include="Auth\UserAccess.cs" />
     <Compile Include="Controllers\AdminController.cs" />
     <Compile Include="Controllers\AuthController.cs" />
     <Compile Include="Controllers\BadgeController.cs" />
