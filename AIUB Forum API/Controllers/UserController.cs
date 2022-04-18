@@ -27,8 +27,6 @@ namespace AIUB_Forum_API.Controllers
         }
         [Route("api/users/{id}")]
         [HttpGet]
-        [UserAccess]
-        [ModeratorAccess]
         public HttpResponseMessage GetUser(int id)
         {
             try
