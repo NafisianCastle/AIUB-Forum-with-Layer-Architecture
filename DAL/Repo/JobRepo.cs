@@ -43,6 +43,6 @@ namespace DAL.Repo
             if (c == null) return false;
             db.Jobs.Remove(c);
             return db.SaveChanges() != 0; ;
-        }
+        }  
     }
 }

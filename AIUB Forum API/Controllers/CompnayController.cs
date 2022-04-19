@@ -28,6 +28,15 @@ namespace AIUB_Web_Api.Controllers
             return Request.CreateResponse(HttpStatusCode.OK, cp);
         }
 
+        [Route("api/Job/GetByCompanyName/{Company}")]
+        [HttpGet]
+        public HttpResponseMessage GetByPositionName(string Company)
+        {
+            var cp = CompanyService.GetByCompanyName(Company);
+            return Request.CreateResponse(HttpStatusCode.OK, cp);
+
+        }
+
         [Route("api/Company/create")]
         [HttpPost]
         public HttpResponseMessage Create(CompanyModel Company)

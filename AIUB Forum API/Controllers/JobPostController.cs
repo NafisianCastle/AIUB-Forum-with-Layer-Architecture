@@ -19,6 +19,7 @@ namespace AIUB_Web_Api.Controllers
             return Request.CreateResponse(HttpStatusCode.OK, cp);
         }
 
+
         [HttpGet]
         [Route("api/JobPost/{id}")]
         public HttpResponseMessage Get(int id)
@@ -26,6 +27,27 @@ namespace AIUB_Web_Api.Controllers
             var cp = JobPostService.Get(id);
             return Request.CreateResponse(HttpStatusCode.OK, cp);
         }
+
+
+        [Route("api/Job/GetByTitle/{Title}")]
+        [HttpGet]
+        public HttpResponseMessage GetByTitle(string Title)
+        {
+            var cp = JobPostService.GetByTitle(Title);
+            return Request.CreateResponse(HttpStatusCode.OK, cp);
+
+        }
+
+
+        [Route("api/Job/GetByCreateDate/{date}")]
+        [HttpGet]
+        public HttpResponseMessage GetByCreateDate(DateTime date)
+        {
+            var cp = JobPostService.GetByCreateDate(date);
+            return Request.CreateResponse(HttpStatusCode.OK, cp);
+
+        }
+
 
         [Route("api/JobPost/create")]
         [HttpPost]

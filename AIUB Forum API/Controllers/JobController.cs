@@ -27,6 +27,24 @@ namespace AIUB_Web_Api.Controllers
             return Request.CreateResponse(HttpStatusCode.OK, cp);
         }
 
+        [Route("api/Job/GetByCompanyId/{id}")]
+        [HttpGet]
+        public HttpResponseMessage GetByCompanyId(int id)
+        {
+            var cp = JobService.GetByCompanyId(id);
+            return Request.CreateResponse(HttpStatusCode.OK, cp);
+
+        }
+        [Route("api/Job/GetByPostion/{Postion}")]
+        [HttpGet]
+        public HttpResponseMessage GetByPositionName(string Postion)
+        {
+            var cp = JobService.GetByPositionName(Postion);
+            return Request.CreateResponse(HttpStatusCode.OK, cp);
+
+        }
+
+
         [Route("api/Job/create")]
         [HttpPost]
         public HttpResponseMessage Create(JobModel Job)

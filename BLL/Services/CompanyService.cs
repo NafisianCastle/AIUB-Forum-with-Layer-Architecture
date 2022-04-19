@@ -44,7 +44,15 @@ namespace BLL.Services
                 Email = s.Email
             }).ToList();
         }
-        
+
+        public static List<CompanyModel> GetByCompanyName(string Company)
+        {
+            var config = new MapperConfiguration(cfg => cfg.CreateMap<Company, CompanyModel>());
+            var mapper = new Mapper(config);
+            var data = mapper.Map<List<CompanyModel>>(DataAccessFactory.CompanyDataAccess().Get().Where(n => n.CompanyName == Company).Select(n => n).ToList());
+            return data;
+        }
+
         public static void Add(CompanyModel c)
         {
             var config = new MapperConfiguration(cfg =>

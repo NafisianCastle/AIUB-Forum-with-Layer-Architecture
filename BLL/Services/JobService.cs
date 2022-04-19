@@ -41,7 +41,23 @@ namespace BLL.Services
                Salary= s.Salary,
             }).ToList();
         }
-     
+
+        public static List<JobModel> GetByCompanyId(int ID)
+        {
+            var config = new MapperConfiguration(cfg => cfg.CreateMap<Job, JobModel>());
+            var mapper = new Mapper(config);
+            var data = mapper.Map<List<JobModel>>(DataAccessFactory.JobDataAccess().Get().Where(n => n.CompanyId == ID).Select(n => n).ToList());
+            return data;
+        }
+
+        public static List<JobModel> GetByPositionName(string postion)
+        {
+            var config = new MapperConfiguration(cfg => cfg.CreateMap<Job, JobModel>());
+            var mapper = new Mapper(config);
+            var data = mapper.Map<List<JobModel>>(DataAccessFactory.JobDataAccess().Get().Where(n => n.PositonName == postion).Select(n => n).ToList());
+            return data;
+        }
+
         public static void Add(JobModel j)
         {
             var config = new MapperConfiguration(cfg =>
