@@ -1,22 +1,19 @@
 ﻿using BLL.Entities;
 using BLL.Services;
-using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Web.Http;
 
-namespace AIUB_Web_Api.Controllers
+namespace AIUB_Forum_API.Controllers
 {
     public class CompnayController : ApiController
     {
-       
+
         [HttpGet]
         [Route("api/Company")]
         public HttpResponseMessage Get()
         {
-            var cp=CompanyService.Get();
+            var cp = CompanyService.Get();
             return Request.CreateResponse(HttpStatusCode.OK, cp);
         }
 
@@ -39,18 +36,18 @@ namespace AIUB_Web_Api.Controllers
 
         [Route("api/Company/create")]
         [HttpPost]
-        public HttpResponseMessage Create(CompanyModel Company)
+        public HttpResponseMessage Create(CompanyModel company)
         {
-            CompanyService.Add(Company);
-            return Request.CreateResponse(HttpStatusCode.OK,"Created");
+            CompanyService.Add(company);
+            return Request.CreateResponse(HttpStatusCode.OK, "Created");
         }
 
         [Route("api/Company/edit")]
         [HttpPost]
-        public HttpResponseMessage Edit(CompanyModel Company)
+        public HttpResponseMessage Edit(CompanyModel company)
         {
-            CompanyService.Edit(Company);
-            return Request.CreateResponse(HttpStatusCode.OK,"Edited");
+            CompanyService.Edit(company);
+            return Request.CreateResponse(HttpStatusCode.OK, "Edited");
         }
 
         [Route("api/Company/delete/{id}")]
@@ -58,7 +55,7 @@ namespace AIUB_Web_Api.Controllers
         public HttpResponseMessage Delete(int id)
         {
             CompanyService.Delete(id);
-            return Request.CreateResponse(HttpStatusCode.OK,"Deleted");
+            return Request.CreateResponse(HttpStatusCode.OK, "Deleted");
         }
     }
 }

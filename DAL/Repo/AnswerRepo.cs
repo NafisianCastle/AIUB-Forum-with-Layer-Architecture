@@ -1,40 +1,49 @@
 ﻿using DAL.Database;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace DAL.Repo
 {
     public class AnswerRepo : IRepository<Answer, int>
     {
-        private AIUB_ForumEntities _db;
-
+        private readonly AIUB_ForumEntities _db;
         public AnswerRepo(AIUB_ForumEntities db)
         {
             this._db = db;
         }
-
         public bool Add(Answer obj)
         {
-            throw new System.NotImplementedException();
-        }
-
-        public Answer Get(int id)
-        {
-            throw new System.NotImplementedException();
-        }
-
-        public List<Answer> Get()
-        {
-            throw new System.NotImplementedException();
-        }
-
-        public bool Edit(Answer obj)
-        {
-            throw new System.NotImplementedException();
+            _db.Answers.Add(obj);
+            return _db.SaveChanges() != 0;
         }
 
         public bool Delete(int id)
         {
-            throw new System.NotImplementedException();
+            var oobj = _db.Answers.FirstOrDefault(x => x.AnsId == id);
+            if (oobj == null)
+            {
+                return false;
+            }
+
+            _db.Answers.Remove(oobj);
+            return _db.SaveChanges() == 1;
+        }
+
+        public bool Edit(Answer obj)
+        {
+            var oobj = _db.Answers.FirstOrDefault(x => x.AnsId == obj.AnsId);
+            _db.Entry(oobj).CurrentValues.SetValues(obj);
+            return _db.SaveChanges() != 0;
+        }
+
+        public Answer Get(int id)
+        {
+            return _db.Answers.FirstOrDefault(x => x.AnsId == id);
+        }
+
+        public List<Answer> Get()
+        {
+            return _db.Answers.ToList();
         }
     }
 }

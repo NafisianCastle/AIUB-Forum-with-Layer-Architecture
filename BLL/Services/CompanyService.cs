@@ -2,30 +2,27 @@
 using BLL.Entities;
 using DAL;
 using DAL.Database;
-using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace BLL.Services
 {
     public class CompanyService
     {
         public static CompanyModel Get(int id)
-       
+
         {
             var st = DataAccessFactory.CompanyDataAccess().Get(id);
             var s = new CompanyModel()
             {
                 CompanyId = st.CompanyId,
                 UserId = st.UserId,
-               JobPostCount = st.JobPostCount,
-               CompanyName = st.CompanyName,
-               Location = st.Location,
-               CDescription = st.CDescription,
-               CCategory = st.CCategory,
-               Email = st.Email
+                JobPostCount = st.JobPostCount,
+                CompanyName = st.CompanyName,
+                Location = st.Location,
+                CDescription = st.CDescription,
+                CCategory = st.CCategory,
+                Email = st.Email
             };
             return s;
         }
@@ -45,6 +42,7 @@ namespace BLL.Services
             }).ToList();
         }
 
+<<<<<<< HEAD
         public static List<CompanyModel> GetByCompanyName(string Company)
         {
             var config = new MapperConfiguration(cfg => cfg.CreateMap<Company, CompanyModel>());
@@ -53,11 +51,13 @@ namespace BLL.Services
             return data;
         }
 
+=======
+>>>>>>> 64e7636676fb1ad0a0483d5edc1846a6c855688b
         public static void Add(CompanyModel c)
         {
             var config = new MapperConfiguration(cfg =>
             {
-                cfg.CreateMap<CompanyModel,Company > ();
+                cfg.CreateMap<CompanyModel, Company>();
 
             });
             var mapper = new Mapper(config);
@@ -68,7 +68,7 @@ namespace BLL.Services
         {
             var config = new MapperConfiguration(cfg =>
             {
-                cfg.CreateMap< CompanyModel,Company > ();
+                cfg.CreateMap<CompanyModel, Company>();
 
             });
             var mapper = new Mapper(config);

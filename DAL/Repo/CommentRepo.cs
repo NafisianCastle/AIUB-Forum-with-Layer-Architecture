@@ -1,40 +1,49 @@
 ﻿using DAL.Database;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace DAL.Repo
 {
     public class CommentRepo : IRepository<Comment, int>
     {
-        private AIUB_ForumEntities _db;
-
+        private readonly AIUB_ForumEntities _db;
         public CommentRepo(AIUB_ForumEntities db)
         {
             this._db = db;
         }
-
         public bool Add(Comment obj)
         {
-            throw new System.NotImplementedException();
-        }
-
-        public Comment Get(int id)
-        {
-            throw new System.NotImplementedException();
-        }
-
-        public List<Comment> Get()
-        {
-            throw new System.NotImplementedException();
-        }
-
-        public bool Edit(Comment obj)
-        {
-            throw new System.NotImplementedException();
+            _db.Comments.Add(obj);
+            return _db.SaveChanges() != 0;
         }
 
         public bool Delete(int id)
         {
-            throw new System.NotImplementedException();
+            var oobj = _db.Comments.FirstOrDefault(x => x.CommentId == id);
+            if (oobj == null)
+            {
+                return false;
+            }
+
+            _db.Comments.Remove(oobj);
+            return _db.SaveChanges() == 1;
+        }
+
+        public bool Edit(Comment obj)
+        {
+            var oobj = _db.Comments.FirstOrDefault(x => x.CommentId == obj.CommentId);
+            _db.Entry(oobj).CurrentValues.SetValues(obj);
+            return _db.SaveChanges() != 0;
+        }
+
+        public Comment Get(int id)
+        {
+            return _db.Comments.FirstOrDefault(x => x.CommentId == id);
+        }
+
+        public List<Comment> Get()
+        {
+            return _db.Comments.ToList();
         }
     }
 }

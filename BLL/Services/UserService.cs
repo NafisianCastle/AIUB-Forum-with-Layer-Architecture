@@ -8,6 +8,7 @@ namespace BLL.Services
 {
     public class UserService
     {
+
         public static List<UserModel> GetAllUsers()
         {
             var config = new MapperConfiguration(c =>
@@ -46,7 +47,7 @@ namespace BLL.Services
             return data;
         }
 
-        public static void AddUser(UserModel u)
+        public static bool AddUser(UserModel u)
         {
             var config = new MapperConfiguration(c =>
             {
@@ -55,10 +56,10 @@ namespace BLL.Services
             });
             var mapper = new Mapper(config);
             var data = mapper.Map<User>(u);
-            DataAccessFactory.UserDataAccess().Add(data);
+            return DataAccessFactory.UserDataAccess().Add(data);
         }
 
-        public static void EditUser(UserModel u)
+        public static bool EditUser(UserModel u)
         {
             var config = new MapperConfiguration(c =>
             {
@@ -67,12 +68,12 @@ namespace BLL.Services
             });
             var mapper = new Mapper(config);
             var data = mapper.Map<User>(u);
-            DataAccessFactory.UserDataAccess().Edit(data);
+            return DataAccessFactory.UserDataAccess().Edit(data);
         }
 
-        public static void DeleteUser(int id)
+        public static bool DeleteUser(int id)
         {
-            DataAccessFactory.UserDataAccess().Delete(id);
+            return DataAccessFactory.UserDataAccess().Delete(id);
         }
     }
 }
