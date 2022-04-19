@@ -25,7 +25,6 @@ namespace DAL.Repo
             {
                 return null;
             }
-
             var g = Guid.NewGuid();
             var t = g.ToString();
             var token = new Token

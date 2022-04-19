@@ -38,11 +38,12 @@ namespace BLL.Services
         {
             var config = new MapperConfiguration(c =>
             {
-                c.CreateMap<AdminModel, Admin>();
+                c.CreateMap<UserModel, User>();
+
 
             });
             var mapper = new Mapper(config);
-            var data = mapper.Map<Admin>(u);
+            var data = mapper.Map<User>(u);
             DataAccessFactory.AdminDataAccess().Add(data);
         }
 
@@ -50,11 +51,11 @@ namespace BLL.Services
         {
             var config = new MapperConfiguration(c =>
             {
-                c.CreateMap<AdminModel, Admin>();
+                c.CreateMap<UserModel, User>();
 
             });
             var mapper = new Mapper(config);
-            var data = mapper.Map<Admin>(u);
+            var data = mapper.Map<User>(u);
             object p = DataAccessFactory.AdminDataAccess().Edit(data);
 
         }

@@ -6,7 +6,7 @@ namespace DAL
     public static class DataAccessFactory
     {
         private static readonly AIUB_ForumEntities Db = new AIUB_ForumEntities();
-        public static IRepository<Admin, int> AdminDataAccess()
+        public static IRepository<User,int> AdminDataAccess()
         {
             return new AdminRepo(Db);
         }
