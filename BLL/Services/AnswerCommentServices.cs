@@ -1,8 +1,8 @@
-﻿using AutoMapper;
+﻿using System.Collections.Generic;
+using AutoMapper;
 using BLL.Entities;
 using DAL;
 using DAL.Database;
-using System.Collections.Generic;
 
 namespace BLL.Services
 {
@@ -17,6 +17,7 @@ namespace BLL.Services
             var stm = mapper.Map<AnswerCommentModel>(pt);
             return stm;
         }
+
         public static List<AnswerCommentModel> Get()
 
         {
@@ -26,12 +27,13 @@ namespace BLL.Services
             var stm = mapper.Map<List<AnswerCommentModel>>(pt);
             return stm;
         }
+
         public static bool Delete(int id)
 
         {
             return DataAccessFactory.AnswerCommentDataAccess().Delete(id);
-
         }
+
         public static bool Add(AnswerCommentModel ppp)
         {
             var config = new MapperConfiguration(cfg => cfg.CreateMap<AnswerCommentModel, AnswerComment>());
@@ -39,6 +41,7 @@ namespace BLL.Services
             var p = mapper.Map<AnswerComment>(ppp);
             return DataAccessFactory.AnswerCommentDataAccess().Add(p);
         }
+
         public static bool Edit(AnswerCommentModel ppp)
         {
             var config = new MapperConfiguration(cfg => cfg.CreateMap<AnswerCommentModel, AnswerComment>());

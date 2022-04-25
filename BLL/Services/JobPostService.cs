@@ -1,9 +1,9 @@
-﻿using AutoMapper;
+﻿using System.Collections.Generic;
+using System.Linq;
+using AutoMapper;
 using BLL.Entities;
 using DAL;
 using DAL.Database;
-using System.Collections.Generic;
-using System.Linq;
 
 namespace BLL.Services
 {
@@ -13,31 +13,32 @@ namespace BLL.Services
 
         {
             var st = DataAccessFactory.JobPostDataAccess().Get(id);
-            var s = new JobPostModel()
+            var s = new JobPostModel
             {
                 JpId = st.JPId,
                 JpCreationDate = st.JPCreationDate,
                 JpDeleteDate = st.JPDeleteDate,
                 Body = st.Body,
                 JobId = st.JobId,
-                Title = st.Title,
+                Title = st.Title
             };
             return s;
         }
+
         public static List<JobPostModel> Get()
         {
             var sts = DataAccessFactory.JobPostDataAccess().Get();
-            return sts.Select(s => new JobPostModel()
+            return sts.Select(s => new JobPostModel
             {
                 JpId = s.JPId,
                 JpCreationDate = s.JPCreationDate,
                 JpDeleteDate = s.JPDeleteDate,
                 Body = s.Body,
                 JobId = s.JobId,
-                Title = s.Title,
-
+                Title = s.Title
             }).ToList();
         }
+
         public static List<JobPostModel> GetAll()
         {
             var config = new MapperConfiguration(cfg => cfg.CreateMap<JobPost, JobPostModel>());
@@ -45,28 +46,21 @@ namespace BLL.Services
             var data = mapper.Map<List<JobPostModel>>(DataAccessFactory.JobPostDataAccess().Get());
             return data;
         }
+
         public static void Add(JobPostModel j)
         {
-            var config = new MapperConfiguration(cfg =>
-            {
-                cfg.CreateMap<JobPostModel, JobPost>();
-
-            });
+            var config = new MapperConfiguration(cfg => { cfg.CreateMap<JobPostModel, JobPost>(); });
             var mapper = new Mapper(config);
             var data = mapper.Map<JobPost>(j);
             DataAccessFactory.JobPostDataAccess().Add(data);
         }
+
         public static void Edit(JobPostModel j)
         {
-            var config = new MapperConfiguration(cfg =>
-            {
-                cfg.CreateMap<JobPostModel, JobPost>();
-
-            });
+            var config = new MapperConfiguration(cfg => { cfg.CreateMap<JobPostModel, JobPost>(); });
             var mapper = new Mapper(config);
             var data = mapper.Map<JobPost>(j);
             DataAccessFactory.JobPostDataAccess().Edit(data);
-
         }
 
         public static void Delete(int id)

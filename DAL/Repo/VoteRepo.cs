@@ -1,6 +1,6 @@
-﻿using DAL.Database;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
+using DAL.Database;
 
 namespace DAL.Repo
 {
@@ -10,7 +10,7 @@ namespace DAL.Repo
 
         public VoteRepo(AIUB_ForumEntities db)
         {
-            this._db = db;
+            _db = db;
         }
 
         public bool Add(Vote obj)
@@ -39,10 +39,7 @@ namespace DAL.Repo
         public bool Delete(int id)
         {
             var c = _db.Votes.FirstOrDefault(e => e.VoteId == id);
-            if (c == null)
-            {
-                return false;
-            }
+            if (c == null) return false;
 
             _db.Votes.Remove(c);
             return true;

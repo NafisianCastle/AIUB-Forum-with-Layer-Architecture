@@ -1,27 +1,26 @@
 ﻿using System;
-using DAL.Database;
 using System.Collections.Generic;
-using System.Diagnostics;
 using System.Linq;
-using System.Net.Sockets;
+using DAL.Database;
 
 namespace DAL.Repo
 {
-    public class AdminRepo : IRepository<User,int>
+    public class AdminRepo : IRepository<User, int>
     {
         private readonly AIUB_ForumEntities _db;
 
         public AdminRepo(AIUB_ForumEntities db)
         {
-            this._db = db;
+            _db = db;
         }
+
         public bool Add(User obj)
         {
             var p = _db.Users.FirstOrDefault(en => en.UserId == obj.UserId);
             obj.UserType = "Admin";
             _db.Entry(p).CurrentValues.SetValues(obj);
             _db.SaveChanges();
-            var admin =new Admin
+            var admin = new Admin
             {
                 UserId = obj.UserId
             };

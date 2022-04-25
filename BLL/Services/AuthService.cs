@@ -9,6 +9,7 @@ namespace BLL.Services
             var token = DataAccessFactory.AuthDataAccess().Authenticate(email, pass);
             return token;
         }
+
         public static bool ValidateToken(string key)
         {
             var token = DataAccessFactory.TokenDataAccess().Get(key);

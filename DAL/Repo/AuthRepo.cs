@@ -1,30 +1,23 @@
-﻿using DAL.Database;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using DAL.Database;
 
 namespace DAL.Repo
 {
     public class AuthRepo : IRepository<Token, string>, IAuth<Token>
     {
         private readonly AIUB_ForumEntities _db;
+
         public AuthRepo(AIUB_ForumEntities db)
         {
-            this._db = db;
-        }
-        public bool Add(Token obj)
-        {
-            _db.Tokens.Add(obj);
-            return _db.SaveChanges() != 0;
+            _db = db;
         }
 
         public Token Authenticate(string email, string password)
         {
             var data = _db.Users.FirstOrDefault(x => x.Email.Equals(email) && x.Password.Equals(password));
-            if (data == null)
-            {
-                return null;
-            }
+            if (data == null) return null;
             var g = Guid.NewGuid();
             var t = g.ToString();
             var token = new Token
@@ -34,12 +27,19 @@ namespace DAL.Repo
                 UserId = data.UserId,
                 ExpireDate = null
             };
-            return this.Add(token) ? token : null;
+            return Add(token) ? token : null;
+        }
+
+        public bool Add(Token obj)
+        {
+            _db.Tokens.Add(obj);
+            return _db.SaveChanges() != 0;
         }
 
         public bool Delete(string token)
         {
-            _db.Tokens.Remove(_db.Tokens.FirstOrDefault(e => e.Tkey.Equals(token)) ?? throw new InvalidOperationException());
+            _db.Tokens.Remove(_db.Tokens.FirstOrDefault(e => e.Tkey.Equals(token)) ??
+                              throw new InvalidOperationException());
             return _db.SaveChanges() != 0;
         }
 

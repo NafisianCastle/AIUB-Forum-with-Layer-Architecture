@@ -1,8 +1,8 @@
-﻿using AutoMapper;
+﻿using System.Collections.Generic;
+using AutoMapper;
 using BLL.Entities;
 using DAL;
 using DAL.Database;
-using System.Collections.Generic;
 
 namespace BLL.Services
 {
@@ -10,11 +10,7 @@ namespace BLL.Services
     {
         public static List<AdminModel> GetAllAdmin()
         {
-            var config = new MapperConfiguration(c =>
-            {
-                c.CreateMap<Admin, AdminModel>();
-
-            });
+            var config = new MapperConfiguration(c => { c.CreateMap<Admin, AdminModel>(); });
             var mapper = new Mapper(config);
             var da = DataAccessFactory.AdminDataAccess();
             var data = mapper.Map<List<AdminModel>>(da.Get());
@@ -24,10 +20,7 @@ namespace BLL.Services
 
         public static AdminModel GetAdmin(int id)
         {
-            var config = new MapperConfiguration(c =>
-            {
-                c.CreateMap<Admin, AdminModel>();
-            });
+            var config = new MapperConfiguration(c => { c.CreateMap<Admin, AdminModel>(); });
             var mapper = new Mapper(config);
             var da = DataAccessFactory.AdminDataAccess();
             var data = mapper.Map<AdminModel>(da.Get(id));
@@ -36,12 +29,7 @@ namespace BLL.Services
 
         public static void AddAdmin(AdminModel u)
         {
-            var config = new MapperConfiguration(c =>
-            {
-                c.CreateMap<UserModel, User>();
-
-
-            });
+            var config = new MapperConfiguration(c => { c.CreateMap<UserModel, User>(); });
             var mapper = new Mapper(config);
             var data = mapper.Map<User>(u);
             DataAccessFactory.AdminDataAccess().Add(data);
@@ -49,15 +37,10 @@ namespace BLL.Services
 
         public static void EditAdmin(AdminModel u)
         {
-            var config = new MapperConfiguration(c =>
-            {
-                c.CreateMap<UserModel, User>();
-
-            });
+            var config = new MapperConfiguration(c => { c.CreateMap<UserModel, User>(); });
             var mapper = new Mapper(config);
             var data = mapper.Map<User>(u);
             object p = DataAccessFactory.AdminDataAccess().Edit(data);
-
         }
 
         public static void DeleteAdmin(int id)

@@ -1,8 +1,8 @@
-﻿using AutoMapper;
+﻿using System.Collections.Generic;
+using AutoMapper;
 using BLL.Entities;
 using DAL;
 using DAL.Database;
-using System.Collections.Generic;
 
 namespace BLL.Services
 {
@@ -17,6 +17,7 @@ namespace BLL.Services
             var stm = mapper.Map<PostModel>(pt);
             return stm;
         }
+
         public static List<PostModel> Get()
 
         {
@@ -26,12 +27,13 @@ namespace BLL.Services
             var stm = mapper.Map<List<PostModel>>(pt);
             return stm;
         }
+
         public static bool Delete(int id)
 
         {
             return DataAccessFactory.PostDataAccess().Delete(id);
-
         }
+
         public static bool Add(PostModel ppp)
         {
             var config = new MapperConfiguration(cfg => cfg.CreateMap<PostModel, Post>());
@@ -39,6 +41,7 @@ namespace BLL.Services
             var p = mapper.Map<Post>(ppp);
             return DataAccessFactory.PostDataAccess().Add(p);
         }
+
         public static bool Edit(PostModel ppp)
         {
             var config = new MapperConfiguration(cfg => cfg.CreateMap<PostModel, Post>());
@@ -46,6 +49,5 @@ namespace BLL.Services
             var p = mapper.Map<Post>(ppp);
             return DataAccessFactory.PostDataAccess().Edit(p);
         }
-
     }
 }

@@ -1,6 +1,6 @@
-﻿using DAL.Database;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
+using DAL.Database;
 
 namespace DAL.Repo
 {
@@ -10,7 +10,7 @@ namespace DAL.Repo
 
         public CompanyRepo(AIUB_ForumEntities db)
         {
-            this._db = db;
+            _db = db;
         }
 
         public bool Add(Company obj)
@@ -39,13 +39,11 @@ namespace DAL.Repo
         public bool Delete(int id)
         {
             var c = _db.Companies.FirstOrDefault(e => e.CompanyId == id);
-            if (c == null)
-            {
-                return false;
-            }
+            if (c == null) return false;
 
             _db.Companies.Remove(c);
-            return _db.SaveChanges() != 0; ;
+            return _db.SaveChanges() != 0;
+            ;
         }
     }
 }

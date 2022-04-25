@@ -1,6 +1,6 @@
-﻿using DAL.Database;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
+using DAL.Database;
 
 namespace DAL.Repo
 {
@@ -10,8 +10,9 @@ namespace DAL.Repo
 
         public BadgeRepo(AIUB_ForumEntities db)
         {
-            this._db = db;
+            _db = db;
         }
+
         public bool Add(Badge obj)
         {
             _db.Badges.Add(obj);
@@ -38,14 +39,10 @@ namespace DAL.Repo
         public bool Delete(int id)
         {
             var c = _db.Badges.FirstOrDefault(e => e.BadgeId == id);
-            if (c == null)
-            {
-                return false;
-            }
+            if (c == null) return false;
 
             _db.Badges.Remove(c);
             return true;
         }
-
     }
 }

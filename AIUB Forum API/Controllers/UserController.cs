@@ -1,10 +1,10 @@
-﻿using AIUB_Forum_API.Auth;
-using BLL.Entities;
-using BLL.Services;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Net;
 using System.Net.Http;
 using System.Web.Http;
+using AIUB_Forum_API.Auth;
+using BLL.Entities;
+using BLL.Services;
 
 namespace AIUB_Forum_API.Controllers
 {
@@ -23,8 +23,8 @@ namespace AIUB_Forum_API.Controllers
             {
                 return Request.CreateResponse(HttpStatusCode.NotFound, "Not found");
             }
-
         }
+
         [Route("api/users/{id}")]
         [HttpGet]
         public HttpResponseMessage GetUser(int id)
@@ -37,8 +37,8 @@ namespace AIUB_Forum_API.Controllers
             {
                 return Request.CreateResponse(HttpStatusCode.NotFound, "Not found");
             }
-
         }
+
         [Route("api/users/search/{search}")]
         [HttpGet]
         [AdminAccess]
@@ -46,9 +46,9 @@ namespace AIUB_Forum_API.Controllers
         [UserAccess]
         public List<UserModel> GetSearchUsers(string search)
         {
-
             return UserService.GetSearchUsers(search);
         }
+
         [Route("api/users/create")]
         [HttpPost]
         public HttpResponseMessage Create(UserModel user)
@@ -61,8 +61,8 @@ namespace AIUB_Forum_API.Controllers
             {
                 return Request.CreateResponse(HttpStatusCode.OK, "Server Error");
             }
-
         }
+
         [Route("api/users/edit")]
         [HttpPost]
         public HttpResponseMessage Edit(UserModel user)
@@ -76,19 +76,20 @@ namespace AIUB_Forum_API.Controllers
                 return Request.CreateResponse(HttpStatusCode.OK, "Server Error");
             }
         }
+
         [Route("api/users/delete/{id}")]
         [HttpGet]
         public HttpResponseMessage Delete(int id)
         {
             try
             {
-                return Request.CreateResponse(HttpStatusCode.OK, UserService.DeleteUser(id) ? "Deleted" : "not Deleted");
+                return Request.CreateResponse(HttpStatusCode.OK,
+                    UserService.DeleteUser(id) ? "Deleted" : "not Deleted");
             }
             catch
             {
                 return Request.CreateResponse(HttpStatusCode.OK, "Server Error");
             }
-
         }
     }
 }

@@ -1,6 +1,6 @@
-﻿using DAL.Database;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
+using DAL.Database;
 
 namespace DAL.Repo
 {
@@ -10,8 +10,9 @@ namespace DAL.Repo
 
         public ModeratorRepo(AIUB_ForumEntities db)
         {
-            this._db = db;
+            _db = db;
         }
+
         public bool Add(Moderator obj)
         {
             _db.Moderators.Add(obj);
@@ -38,15 +39,10 @@ namespace DAL.Repo
         public bool Delete(int id)
         {
             var c = _db.Moderators.FirstOrDefault(e => e.ModeratorId == id);
-            if (c == null)
-            {
-                return false;
-            }
+            if (c == null) return false;
 
             _db.Moderators.Remove(c);
             return true;
         }
-
-
     }
 }

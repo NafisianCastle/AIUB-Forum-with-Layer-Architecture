@@ -1,8 +1,8 @@
-﻿using BLL.Entities;
-using BLL.Services;
-using System.Net;
+﻿using System.Net;
 using System.Net.Http;
 using System.Web.Http;
+using BLL.Entities;
+using BLL.Services;
 
 namespace AIUB_Forum_API.Controllers
 {
@@ -14,12 +14,14 @@ namespace AIUB_Forum_API.Controllers
         {
             return Request.CreateResponse(HttpStatusCode.OK, ModeratorService.GetAllModerator());
         }
+
         [Route("api/Moderator/{id}")]
         [HttpGet]
         public HttpResponseMessage GetModerator(int id)
         {
             return Request.CreateResponse(HttpStatusCode.OK, ModeratorService.GetModerator(id));
         }
+
         [Route("api/Moderator/create")]
         [HttpPost]
         public HttpResponseMessage Create(ModeratorModel modarator)
@@ -27,6 +29,7 @@ namespace AIUB_Forum_API.Controllers
             ModeratorService.AddModerator(modarator);
             return Request.CreateResponse(HttpStatusCode.OK);
         }
+
         [Route("api/Moderator/edit")]
         [HttpPost]
         public HttpResponseMessage Edit(ModeratorModel modarator)
@@ -34,6 +37,7 @@ namespace AIUB_Forum_API.Controllers
             ModeratorService.EditModerator(modarator);
             return Request.CreateResponse(HttpStatusCode.OK);
         }
+
         [Route("api/Moderator/delete/{id}")]
         [HttpGet]
         public HttpResponseMessage Delete(int id)

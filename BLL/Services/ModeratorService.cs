@@ -1,8 +1,8 @@
-﻿using AutoMapper;
+﻿using System.Collections.Generic;
+using AutoMapper;
 using BLL.Entities;
 using DAL;
 using DAL.Database;
-using System.Collections.Generic;
 
 namespace BLL.Services
 {
@@ -10,11 +10,7 @@ namespace BLL.Services
     {
         public static List<ModeratorModel> GetAllModerator()
         {
-            var config = new MapperConfiguration(c =>
-            {
-                c.CreateMap<Moderator, ModeratorModel>();
-
-            });
+            var config = new MapperConfiguration(c => { c.CreateMap<Moderator, ModeratorModel>(); });
             var mapper = new Mapper(config);
             var da = DataAccessFactory.ModeratorDataAccess();
             var data = mapper.Map<List<ModeratorModel>>(da.Get());
@@ -24,10 +20,7 @@ namespace BLL.Services
 
         public static ModeratorModel GetModerator(int id)
         {
-            var config = new MapperConfiguration(c =>
-            {
-                c.CreateMap<Moderator, ModeratorModel>();
-            });
+            var config = new MapperConfiguration(c => { c.CreateMap<Moderator, ModeratorModel>(); });
             var mapper = new Mapper(config);
             var da = DataAccessFactory.ModeratorDataAccess();
             var data = mapper.Map<ModeratorModel>(da.Get(id));
@@ -37,11 +30,7 @@ namespace BLL.Services
 
         public static void AddModerator(ModeratorModel u)
         {
-            var config = new MapperConfiguration(c =>
-            {
-                c.CreateMap<ModeratorModel, Moderator>();
-
-            });
+            var config = new MapperConfiguration(c => { c.CreateMap<ModeratorModel, Moderator>(); });
             var mapper = new Mapper(config);
             var data = mapper.Map<Moderator>(u);
             DataAccessFactory.ModeratorDataAccess().Add(data);
@@ -49,15 +38,10 @@ namespace BLL.Services
 
         public static void EditModerator(ModeratorModel u)
         {
-            var config = new MapperConfiguration(c =>
-            {
-                c.CreateMap<ModeratorModel, Moderator>();
-
-            });
+            var config = new MapperConfiguration(c => { c.CreateMap<ModeratorModel, Moderator>(); });
             var mapper = new Mapper(config);
             var data = mapper.Map<Moderator>(u);
             DataAccessFactory.ModeratorDataAccess().Edit(data);
-
         }
 
         public static void DeleteModerator(int id)

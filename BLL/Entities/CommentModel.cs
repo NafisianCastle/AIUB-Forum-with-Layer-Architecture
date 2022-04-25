@@ -1,4 +1,6 @@
-﻿namespace BLL.Entities
+﻿using System;
+
+namespace BLL.Entities
 {
     public class CommentModel
     {
@@ -6,7 +8,7 @@
         public int PostId { get; set; }
         public string Score { get; set; }
         public string Text { get; set; }
-        public System.DateTime Date { get; set; }
+        public DateTime Date { get; set; }
         public int UserId { get; set; }
     }
 }
