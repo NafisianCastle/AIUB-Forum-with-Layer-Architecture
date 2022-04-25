@@ -1,8 +1,8 @@
-﻿using System.Collections.Generic;
-using AutoMapper;
+﻿using AutoMapper;
 using BLL.Entities;
 using DAL;
 using DAL.Database;
+using System.Collections.Generic;
 
 namespace BLL.Services
 {

@@ -1,6 +1,6 @@
-﻿using System.Collections.Generic;
+﻿using DAL.Database;
+using System.Collections.Generic;
 using System.Linq;
-using DAL.Database;
 
 namespace DAL.Repo
 {
@@ -22,7 +22,10 @@ namespace DAL.Repo
         public bool Delete(int id)
         {
             var oobj = _db.Posts.FirstOrDefault(x => x.PostId == id);
-            if (oobj == null) return false;
+            if (oobj == null)
+            {
+                return false;
+            }
 
             _db.Posts.Remove(oobj);
             return _db.SaveChanges() != 0;

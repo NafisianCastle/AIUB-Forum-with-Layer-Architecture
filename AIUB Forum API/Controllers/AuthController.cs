@@ -1,8 +1,8 @@
-﻿using System.Net;
+﻿using BLL.Entities;
+using BLL.Services;
+using System.Net;
 using System.Net.Http;
 using System.Web.Http;
-using BLL.Entities;
-using BLL.Services;
 
 namespace AIUB_Forum_API.Controllers
 {
@@ -14,8 +14,8 @@ namespace AIUB_Forum_API.Controllers
         {
             var token = AuthService.Authenticate(login.Email, login.Password);
             return token != null
-                ? Request.CreateResponse(HttpStatusCode.OK, new {token.Tkey, token.CreationDate})
-                : Request.CreateResponse(HttpStatusCode.NotFound, new {Msg = "User Not found"});
+                ? Request.CreateResponse(HttpStatusCode.OK, new { token.Tkey, token.CreationDate })
+                : Request.CreateResponse(HttpStatusCode.NotFound, new { Msg = "User Not found" });
         }
     }
 }

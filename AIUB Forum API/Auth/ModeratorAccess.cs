@@ -1,8 +1,8 @@
-﻿using System.Net;
+﻿using BLL.Services;
+using System.Net;
 using System.Net.Http;
 using System.Web.Http.Controllers;
 using System.Web.Http.Filters;
-using BLL.Services;
 
 namespace AIUB_Forum_API.Auth
 {
@@ -19,8 +19,10 @@ namespace AIUB_Forum_API.Auth
             else
             {
                 if (!AuthService.ValidateToken(token.ToString()))
+                {
                     actionContext.Response =
                         actionContext.Request.CreateResponse(HttpStatusCode.Forbidden, "Token Expired");
+                }
             }
 
             base.OnAuthorization(actionContext);

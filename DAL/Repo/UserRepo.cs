@@ -1,6 +1,6 @@
-﻿using System.Collections.Generic;
+﻿using DAL.Database;
+using System.Collections.Generic;
 using System.Linq;
-using DAL.Database;
 
 namespace DAL.Repo
 {
@@ -30,7 +30,11 @@ namespace DAL.Repo
         public bool Delete(int id)
         {
             var c = _db.Users.FirstOrDefault(e => e.UserId == id);
-            if (c == null) return false;
+            if (c == null)
+            {
+                return false;
+            }
+
             _db.Users.Remove(c);
             return true;
         }
@@ -44,8 +48,8 @@ namespace DAL.Repo
         public List<User> Search(string search)
         {
             var list = (from p in _db.Users
-                where p.Username.Contains(search)
-                select p).ToList();
+                        where p.Username.Contains(search)
+                        select p).ToList();
             return list;
         }
 

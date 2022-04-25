@@ -1,8 +1,8 @@
-﻿using System.Net;
+﻿using BLL.Entities;
+using BLL.Services;
+using System.Net;
 using System.Net.Http;
 using System.Web.Http;
-using BLL.Entities;
-using BLL.Services;
 
 namespace AIUB_Forum_API.Controllers
 {
@@ -43,8 +43,7 @@ namespace AIUB_Forum_API.Controllers
         {
             try
             {
-                if (PostServices.Add(p)) return Request.CreateResponse(HttpStatusCode.OK, "added");
-                return Request.CreateResponse(HttpStatusCode.OK, "not added");
+                return Request.CreateResponse(HttpStatusCode.OK, PostServices.Add(p) ? "added" : "not added");
             }
             catch
             {
@@ -58,9 +57,7 @@ namespace AIUB_Forum_API.Controllers
         {
             try
             {
-                if (PostServices.Edit(p))
-                    return Request.CreateResponse(HttpStatusCode.OK, "Edited");
-                return Request.CreateResponse(HttpStatusCode.OK, "not Edited");
+                return Request.CreateResponse(HttpStatusCode.OK, PostServices.Edit(p) ? "Edited" : "not Edited");
             }
             catch
             {
@@ -74,8 +71,7 @@ namespace AIUB_Forum_API.Controllers
         {
             try
             {
-                if (PostServices.Delete(id)) return Request.CreateResponse(HttpStatusCode.OK, "Deleted");
-                return Request.CreateResponse(HttpStatusCode.OK, "not Deleted");
+                return Request.CreateResponse(HttpStatusCode.OK, PostServices.Delete(id) ? "Deleted" : "not Deleted");
             }
             catch
             {
@@ -119,8 +115,7 @@ namespace AIUB_Forum_API.Controllers
         {
             try
             {
-                if (AnswerServices.Add(p)) return Request.CreateResponse(HttpStatusCode.OK, "added");
-                return Request.CreateResponse(HttpStatusCode.OK, "not added");
+                return Request.CreateResponse(HttpStatusCode.OK, AnswerServices.Add(p) ? "added" : "not added");
             }
             catch
             {
@@ -134,9 +129,7 @@ namespace AIUB_Forum_API.Controllers
         {
             try
             {
-                if (AnswerServices.Edit(p))
-                    return Request.CreateResponse(HttpStatusCode.OK, "Edited");
-                return Request.CreateResponse(HttpStatusCode.OK, "not Edited");
+                return Request.CreateResponse(HttpStatusCode.OK, AnswerServices.Edit(p) ? "Edited" : "not Edited");
             }
             catch
             {
@@ -150,8 +143,7 @@ namespace AIUB_Forum_API.Controllers
         {
             try
             {
-                if (AnswerServices.Delete(id)) return Request.CreateResponse(HttpStatusCode.OK, "Deleted");
-                return Request.CreateResponse(HttpStatusCode.OK, "not Deleted");
+                return Request.CreateResponse(HttpStatusCode.OK, AnswerServices.Delete(id) ? "Deleted" : "not Deleted");
             }
             catch
             {
@@ -195,8 +187,7 @@ namespace AIUB_Forum_API.Controllers
         {
             try
             {
-                if (CommentServices.Add(p)) return Request.CreateResponse(HttpStatusCode.OK, "added");
-                return Request.CreateResponse(HttpStatusCode.OK, "not added");
+                return Request.CreateResponse(HttpStatusCode.OK, CommentServices.Add(p) ? "added" : "not added");
             }
             catch
             {
@@ -210,9 +201,7 @@ namespace AIUB_Forum_API.Controllers
         {
             try
             {
-                if (CommentServices.Edit(p))
-                    return Request.CreateResponse(HttpStatusCode.OK, "Edited");
-                return Request.CreateResponse(HttpStatusCode.OK, "not Edited");
+                return Request.CreateResponse(HttpStatusCode.OK, CommentServices.Edit(p) ? "Edited" : "not Edited");
             }
             catch
             {
@@ -226,8 +215,8 @@ namespace AIUB_Forum_API.Controllers
         {
             try
             {
-                if (CommentServices.Delete(id)) return Request.CreateResponse(HttpStatusCode.OK, "Deleted");
-                return Request.CreateResponse(HttpStatusCode.OK, "not Deleted");
+                return Request.CreateResponse(HttpStatusCode.OK,
+                    CommentServices.Delete(id) ? "Deleted" : "not Deleted");
             }
             catch
             {
@@ -271,8 +260,7 @@ namespace AIUB_Forum_API.Controllers
         {
             try
             {
-                if (AnswerCommentServices.Add(p)) return Request.CreateResponse(HttpStatusCode.OK, "added");
-                return Request.CreateResponse(HttpStatusCode.OK, "not added");
+                return Request.CreateResponse(HttpStatusCode.OK, AnswerCommentServices.Add(p) ? "added" : "not added");
             }
             catch
             {
@@ -286,9 +274,7 @@ namespace AIUB_Forum_API.Controllers
         {
             try
             {
-                if (AnswerCommentServices.Edit(p))
-                    return Request.CreateResponse(HttpStatusCode.OK, "Edited");
-                return Request.CreateResponse(HttpStatusCode.OK, "not Edited");
+                return Request.CreateResponse(HttpStatusCode.OK, AnswerCommentServices.Edit(p) ? "Edited" : "not Edited");
             }
             catch
             {
@@ -302,8 +288,8 @@ namespace AIUB_Forum_API.Controllers
         {
             try
             {
-                if (AnswerCommentServices.Delete(id)) return Request.CreateResponse(HttpStatusCode.OK, "Deleted");
-                return Request.CreateResponse(HttpStatusCode.OK, "not Deleted");
+                return Request.CreateResponse(HttpStatusCode.OK,
+                    AnswerCommentServices.Delete(id) ? "Deleted" : "not Deleted");
             }
             catch
             {
