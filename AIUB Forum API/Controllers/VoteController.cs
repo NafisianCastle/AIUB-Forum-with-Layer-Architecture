@@ -15,6 +15,7 @@ namespace AIUB_Forum_API.Controllers
         {
             return Request.CreateResponse(HttpStatusCode.OK, VoteService.GetAllVotes());
         }
+
         [Route("api/votes/{id}")]
         [HttpGet]
         public HttpResponseMessage GetVote(int id)
@@ -29,6 +30,7 @@ namespace AIUB_Forum_API.Controllers
             VoteService.AddVote(vote);
             return Request.CreateResponse(HttpStatusCode.OK);
         }
+
         [Route("api/votes/edit")]
         [HttpPost]
         public HttpResponseMessage Edit(VoteModel vote)
@@ -36,6 +38,7 @@ namespace AIUB_Forum_API.Controllers
             VoteService.EditVote(vote);
             return Request.CreateResponse(HttpStatusCode.OK);
         }
+
         [Route("api/votes/delete/{id}")]
         [HttpGet]
         public HttpResponseMessage Delete(int id)

@@ -10,7 +10,7 @@ namespace DAL.Repo
 
         public CompanyRepo(AIUB_ForumEntities db)
         {
-            this._db = db;
+            _db = db;
         }
 
         public bool Add(Company obj)
@@ -45,7 +45,8 @@ namespace DAL.Repo
             }
 
             _db.Companies.Remove(c);
-            return _db.SaveChanges() != 0; ;
+            return _db.SaveChanges() != 0;
+            ;
         }
     }
 }

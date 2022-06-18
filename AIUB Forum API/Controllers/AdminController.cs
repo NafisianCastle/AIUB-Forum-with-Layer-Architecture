@@ -14,12 +14,14 @@ namespace AIUB_Forum_API.Controllers
         {
             return Request.CreateResponse(HttpStatusCode.OK, AdminService.GetAllAdmin());
         }
+
         [Route("api/Admin/{id}")]
         [HttpGet]
         public HttpResponseMessage GetAdmin(int id)
         {
             return Request.CreateResponse(HttpStatusCode.OK, AdminService.GetAdmin(id));
         }
+
         [Route("api/Admin/create")]
         [HttpPost]
         public HttpResponseMessage Create(AdminModel badge)
@@ -27,6 +29,7 @@ namespace AIUB_Forum_API.Controllers
             AdminService.AddAdmin(badge);
             return Request.CreateResponse(HttpStatusCode.OK);
         }
+
         [Route("api/Admin/edit")]
         [HttpPost]
         public HttpResponseMessage Edit(AdminModel admin)
@@ -34,6 +37,7 @@ namespace AIUB_Forum_API.Controllers
             AdminService.EditAdmin(admin);
             return Request.CreateResponse(HttpStatusCode.OK);
         }
+
         [Route("api/Admin/delete/{id}")]
         [HttpGet]
         public HttpResponseMessage Delete(int id)

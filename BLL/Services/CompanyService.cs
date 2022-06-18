@@ -13,7 +13,7 @@ namespace BLL.Services
 
         {
             var st = DataAccessFactory.CompanyDataAccess().Get(id);
-            var s = new CompanyModel()
+            var s = new CompanyModel
             {
                 CompanyId = st.CompanyId,
                 UserId = st.UserId,
@@ -26,10 +26,11 @@ namespace BLL.Services
             };
             return s;
         }
+
         public static List<CompanyModel> Get()
         {
             var sts = DataAccessFactory.CompanyDataAccess().Get();
-            return sts.Select(s => new CompanyModel()
+            return sts.Select(s => new CompanyModel
             {
                 CompanyId = s.CompanyId,
                 UserId = s.UserId,
@@ -55,26 +56,18 @@ namespace BLL.Services
 >>>>>>> 64e7636676fb1ad0a0483d5edc1846a6c855688b
         public static void Add(CompanyModel c)
         {
-            var config = new MapperConfiguration(cfg =>
-            {
-                cfg.CreateMap<CompanyModel, Company>();
-
-            });
+            var config = new MapperConfiguration(cfg => { cfg.CreateMap<CompanyModel, Company>(); });
             var mapper = new Mapper(config);
             var data = mapper.Map<Company>(c);
             DataAccessFactory.CompanyDataAccess().Add(data);
         }
+
         public static void Edit(CompanyModel c)
         {
-            var config = new MapperConfiguration(cfg =>
-            {
-                cfg.CreateMap<CompanyModel, Company>();
-
-            });
+            var config = new MapperConfiguration(cfg => { cfg.CreateMap<CompanyModel, Company>(); });
             var mapper = new Mapper(config);
             var data = mapper.Map<Company>(c);
             DataAccessFactory.CompanyDataAccess().Edit(data);
-
         }
 
         public static void Delete(int id)

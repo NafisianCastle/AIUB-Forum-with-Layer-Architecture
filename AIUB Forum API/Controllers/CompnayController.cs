@@ -8,7 +8,6 @@ namespace AIUB_Forum_API.Controllers
 {
     public class CompnayController : ApiController
     {
-
         [HttpGet]
         [Route("api/Company")]
         public HttpResponseMessage Get()

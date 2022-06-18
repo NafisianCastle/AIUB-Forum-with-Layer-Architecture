@@ -12,7 +12,7 @@ namespace AIUB_Forum_API.Controllers
         [HttpPost]
         public HttpResponseMessage Login(LoginModel login)
         {
-            dynamic token = AuthService.Authenticate(login.Email, login.Password);
+            var token = AuthService.Authenticate(login.Email, login.Password);
             return token != null
                 ? Request.CreateResponse(HttpStatusCode.OK, new { token.Tkey, token.CreationDate })
                 : Request.CreateResponse(HttpStatusCode.NotFound, new { Msg = "User Not found" });

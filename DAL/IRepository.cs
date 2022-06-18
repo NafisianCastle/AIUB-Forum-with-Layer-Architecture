@@ -11,6 +11,7 @@ namespace DAL
         bool Delete(TId id);
         List<T> Search(TString search);
     }
+
     public interface IRepository<T, TId>
     {
         bool Add(T obj);
@@ -18,5 +19,15 @@ namespace DAL
         bool Delete(TId id);
         T Get(TId id);
         List<T> Get();
+    }
+
+    public interface IRepository<T, U, TId, TString>
+    {
+        bool Add(T obj, U obj2);
+        T Get(TId id);
+        List<T> Get();
+        bool Edit(T obj);
+        bool Delete(TId id);
+        List<T> Search(TString search);
     }
 }

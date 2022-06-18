@@ -1,52 +1,51 @@
 ﻿using DAL.Database;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 
 namespace DAL.Repo
 {
-    public class AdminRepo : IRepository<Admin, int>
+    public class AdminRepo : IRepository<User, int>
     {
         private readonly AIUB_ForumEntities _db;
 
         public AdminRepo(AIUB_ForumEntities db)
         {
-            this._db = db;
-        }
-        public bool Add(Admin obj)
-        {
-            _db.Admins.Add(obj);
-            return _db.SaveChanges() != 0;
+            _db = db;
         }
 
-        public Admin Get(int id)
+        public bool Add(User obj)
         {
-            return _db.Admins.FirstOrDefault(x => x.AdminId == id);
-        }
-
-        public List<Admin> Get()
-        {
-            return _db.Admins.ToList();
-        }
-
-        public bool Edit(Admin obj)
-        {
-            var p = _db.Admins.FirstOrDefault(en => en.AdminId == obj.AdminId);
+            var p = _db.Users.FirstOrDefault(en => en.UserId == obj.UserId);
+            obj.UserType = "Admin";
             _db.Entry(p).CurrentValues.SetValues(obj);
+            _db.SaveChanges();
+            var admin = new Admin
+            {
+                UserId = obj.UserId
+            };
+            _db.Admins.Add(admin);
             return _db.SaveChanges() != 0;
+        }
+
+        public bool Edit(User u)
+        {
+            throw new NotImplementedException();
         }
 
         public bool Delete(int id)
         {
-            var c = _db.Admins.FirstOrDefault(e => e.AdminId == id);
-            if (c == null)
-            {
-                return false;
-            }
-
-            _db.Admins.Remove(c);
-            return true;
+            throw new NotImplementedException();
         }
 
+        public User Get(int id)
+        {
+            throw new NotImplementedException();
+        }
 
+        public List<User> Get()
+        {
+            throw new NotImplementedException();
+        }
     }
 }

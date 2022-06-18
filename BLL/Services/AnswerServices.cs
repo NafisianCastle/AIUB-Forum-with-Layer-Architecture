@@ -17,6 +17,7 @@ namespace BLL.Services
             var stm = mapper.Map<AnswerModel>(pt);
             return stm;
         }
+
         public static List<AnswerModel> Get()
 
         {
@@ -26,12 +27,13 @@ namespace BLL.Services
             var stm = mapper.Map<List<AnswerModel>>(pt);
             return stm;
         }
+
         public static bool Delete(int id)
 
         {
             return DataAccessFactory.AnswerDataAccess().Delete(id);
-
         }
+
         public static bool Add(AnswerModel ppp)
         {
             var config = new MapperConfiguration(cfg => cfg.CreateMap<AnswerModel, Answer>());
@@ -39,6 +41,7 @@ namespace BLL.Services
             var p = mapper.Map<Answer>(ppp);
             return DataAccessFactory.AnswerDataAccess().Add(p);
         }
+
         public static bool Edit(AnswerModel ppp)
         {
             var config = new MapperConfiguration(cfg => cfg.CreateMap<AnswerModel, Answer>());

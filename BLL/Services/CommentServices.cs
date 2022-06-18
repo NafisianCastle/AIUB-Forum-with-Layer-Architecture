@@ -17,6 +17,7 @@ namespace BLL.Services
             var stm = mapper.Map<CommentModel>(pt);
             return stm;
         }
+
         public static List<CommentModel> Get()
 
         {
@@ -26,12 +27,13 @@ namespace BLL.Services
             var stm = mapper.Map<List<CommentModel>>(pt);
             return stm;
         }
+
         public static bool Delete(int id)
 
         {
             return DataAccessFactory.CommentDataAccess().Delete(id);
-
         }
+
         public static bool Add(CommentModel ppp)
         {
             var config = new MapperConfiguration(cfg => cfg.CreateMap<CommentModel, Comment>());
@@ -39,6 +41,7 @@ namespace BLL.Services
             var p = mapper.Map<Comment>(ppp);
             return DataAccessFactory.CommentDataAccess().Add(p);
         }
+
         public static bool Edit(CommentModel ppp)
         {
             var config = new MapperConfiguration(cfg => cfg.CreateMap<CommentModel, Comment>());

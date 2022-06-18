@@ -10,7 +10,7 @@ namespace DAL.Repo
 
         public VoteRepo(AIUB_ForumEntities db)
         {
-            this._db = db;
+            _db = db;
         }
 
         public bool Add(Vote obj)

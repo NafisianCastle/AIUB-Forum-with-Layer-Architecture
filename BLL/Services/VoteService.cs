@@ -10,11 +10,7 @@ namespace BLL.Services
     {
         public static List<VoteModel> GetAllVotes()
         {
-            var config = new MapperConfiguration(c =>
-            {
-                c.CreateMap<Vote, VoteModel>();
-
-            });
+            var config = new MapperConfiguration(c => { c.CreateMap<Vote, VoteModel>(); });
             var mapper = new Mapper(config);
             var da = DataAccessFactory.VoteDataAccess();
             var data = mapper.Map<List<VoteModel>>(da.Get());
@@ -24,10 +20,7 @@ namespace BLL.Services
 
         public static VoteModel GetVote(int id)
         {
-            var config = new MapperConfiguration(c =>
-            {
-                c.CreateMap<Vote, VoteModel>();
-            });
+            var config = new MapperConfiguration(c => { c.CreateMap<Vote, VoteModel>(); });
             var mapper = new Mapper(config);
             var da = DataAccessFactory.VoteDataAccess();
             var data = mapper.Map<VoteModel>(da.Get(id));
@@ -36,11 +29,7 @@ namespace BLL.Services
 
         public static void AddVote(VoteModel u)
         {
-            var config = new MapperConfiguration(c =>
-            {
-                c.CreateMap<VoteModel, Vote>();
-
-            });
+            var config = new MapperConfiguration(c => { c.CreateMap<VoteModel, Vote>(); });
             var mapper = new Mapper(config);
             var data = mapper.Map<Vote>(u);
             DataAccessFactory.VoteDataAccess().Add(data);
@@ -48,15 +37,10 @@ namespace BLL.Services
 
         public static void EditVote(VoteModel u)
         {
-            var config = new MapperConfiguration(c =>
-            {
-                c.CreateMap<VoteModel, Vote>();
-
-            });
+            var config = new MapperConfiguration(c => { c.CreateMap<VoteModel, Vote>(); });
             var mapper = new Mapper(config);
             var data = mapper.Map<Vote>(u);
             DataAccessFactory.VoteDataAccess().Edit(data);
-
         }
 
         public static void DeleteVote(int id)

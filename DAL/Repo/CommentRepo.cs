@@ -7,10 +7,12 @@ namespace DAL.Repo
     public class CommentRepo : IRepository<Comment, int>
     {
         private readonly AIUB_ForumEntities _db;
+
         public CommentRepo(AIUB_ForumEntities db)
         {
-            this._db = db;
+            _db = db;
         }
+
         public bool Add(Comment obj)
         {
             _db.Comments.Add(obj);

@@ -11,7 +11,7 @@ namespace DAL.Repo
 
         public UserRepo(AIUB_ForumEntities db)
         {
-            this._db = db;
+            _db = db;
         }
 
         public bool Add(User obj)
@@ -34,6 +34,7 @@ namespace DAL.Repo
             {
                 return false;
             }
+
             _db.Users.Remove(c);
             return true;
         }

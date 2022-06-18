@@ -10,8 +10,9 @@ namespace DAL.Repo
 
         public ModeratorRepo(AIUB_ForumEntities db)
         {
-            this._db = db;
+            _db = db;
         }
+
         public bool Add(Moderator obj)
         {
             _db.Moderators.Add(obj);
@@ -46,7 +47,5 @@ namespace DAL.Repo
             _db.Moderators.Remove(c);
             return true;
         }
-
-
     }
 }

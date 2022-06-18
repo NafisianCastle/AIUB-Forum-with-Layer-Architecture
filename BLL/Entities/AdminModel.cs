@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace BLL.Entities
+﻿namespace BLL.Entities
 {
     public class AdminModel
     {

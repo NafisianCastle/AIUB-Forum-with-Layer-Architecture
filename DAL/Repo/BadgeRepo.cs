@@ -10,8 +10,9 @@ namespace DAL.Repo
 
         public BadgeRepo(AIUB_ForumEntities db)
         {
-            this._db = db;
+            _db = db;
         }
+
         public bool Add(Badge obj)
         {
             _db.Badges.Add(obj);
@@ -46,6 +47,5 @@ namespace DAL.Repo
             _db.Badges.Remove(c);
             return true;
         }
-
     }
 }

@@ -10,7 +10,7 @@ namespace DAL.Repo
 
         public JobRepo(AIUB_ForumEntities db)
         {
-            this._db = db;
+            _db = db;
         }
 
         public bool Add(Job obj)
@@ -31,7 +31,6 @@ namespace DAL.Repo
 
         public bool Edit(Job obj)
         {
-
             var p = _db.Jobs.FirstOrDefault(en => en.JobId == obj.JobId);
             _db.Entry(p).CurrentValues.SetValues(obj);
             return _db.SaveChanges() != 0;
@@ -53,7 +52,8 @@ namespace DAL.Repo
             }
 
             _db.Jobs.Remove(c);
-            return _db.SaveChanges() != 0; ;
+            return _db.SaveChanges() != 0;
+            ;
         }
 >>>>>>> 64e7636676fb1ad0a0483d5edc1846a6c855688b
     }

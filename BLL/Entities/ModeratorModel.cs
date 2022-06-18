@@ -11,6 +11,5 @@ namespace BLL.Entities
         public DateTime UpdatedDate { get; set; } = DateTime.Now;
         public string Description { get; set; }
         public bool IsModarator { get; set; }
-
     }
 }

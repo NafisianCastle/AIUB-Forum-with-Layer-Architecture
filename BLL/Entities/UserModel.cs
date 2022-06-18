@@ -1,4 +1,6 @@
-﻿namespace BLL.Entities
+﻿using System;
+
+namespace BLL.Entities
 {
     public class UserModel
     {
@@ -9,7 +11,7 @@
         public string Email { get; set; }
         public string AboutMe { get; set; }
         public int? Views { get; set; }
-        public System.DateTime? CreationDate { get; set; }
+        public DateTime? CreationDate { get; set; }
         public int? Reputation { get; set; }
         public byte[] ProfilePic { get; set; }
         public string UserType { get; set; }

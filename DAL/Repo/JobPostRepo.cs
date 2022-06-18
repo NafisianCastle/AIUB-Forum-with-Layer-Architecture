@@ -11,8 +11,9 @@ namespace DAL.Repo
 
         public JobPostRepo(AIUB_ForumEntities db)
         {
-            this._db = db;
+            _db = db;
         }
+
         public bool Add(JobPost obj)
         {
             _db.JobPosts.Add(obj);
@@ -28,12 +29,12 @@ namespace DAL.Repo
             }
 
             _db.JobPosts.Remove(c);
-            return _db.SaveChanges() != 0; ;
+            return _db.SaveChanges() != 0;
+            ;
         }
 
         public bool Edit(JobPost obj)
         {
-
             var p = _db.JobPosts.FirstOrDefault(en => en.JPId == obj.JPId);
             _db.Entry(p).CurrentValues.SetValues(obj);
             return _db.SaveChanges() != 0;

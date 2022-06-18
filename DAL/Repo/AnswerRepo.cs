@@ -7,10 +7,12 @@ namespace DAL.Repo
     public class AnswerRepo : IRepository<Answer, int>
     {
         private readonly AIUB_ForumEntities _db;
+
         public AnswerRepo(AIUB_ForumEntities db)
         {
-            this._db = db;
+            _db = db;
         }
+
         public bool Add(Answer obj)
         {
             _db.Answers.Add(obj);

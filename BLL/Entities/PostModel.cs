@@ -5,9 +5,9 @@ namespace BLL.Entities
     public class PostModel
     {
         public int PostId { get; set; }
-        public System.DateTime CreateDate { get; set; }
-        public Nullable<System.DateTime> ModifyDate { get; set; }
-        public Nullable<System.DateTime> DeleteDate { get; set; }
+        public DateTime CreateDate { get; set; }
+        public DateTime? ModifyDate { get; set; }
+        public DateTime? DeleteDate { get; set; }
         public int Score { get; set; }
         public int Views { get; set; }
         public string Body { get; set; }
@@ -15,7 +15,6 @@ namespace BLL.Entities
         public string Title { get; set; }
         public int AnswerCount { get; set; }
         public int ComentsCount { get; set; }
-        public Nullable<System.DateTime> CloseDate { get; set; }
-
+        public DateTime? CloseDate { get; set; }
     }
 }

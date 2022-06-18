@@ -34,41 +34,46 @@ namespace AIUB_Forum_API.Controllers
             {
                 return Request.CreateResponse(HttpStatusCode.NotFound, "Not found");
             }
-
         }
+
         [Route("api/Badges/create")]
         [HttpPost]
         public HttpResponseMessage Create(BadgeModel badge)
         {
             try
             {
-                return Request.CreateResponse(HttpStatusCode.OK, BadgeService.AddBadge(badge) ? "Created" : "not created");
+                return Request.CreateResponse(HttpStatusCode.OK,
+                    BadgeService.AddBadge(badge) ? "Created" : "not created");
             }
             catch
             {
                 return Request.CreateResponse(HttpStatusCode.OK, "Server Error");
             }
         }
+
         [Route("api/Badges/edit")]
         [HttpPost]
         public HttpResponseMessage Edit(BadgeModel badge)
         {
             try
             {
-                return Request.CreateResponse(HttpStatusCode.OK, BadgeService.EditBadge(badge) ? "Edited" : "not edited");
+                return Request.CreateResponse(HttpStatusCode.OK,
+                    BadgeService.EditBadge(badge) ? "Edited" : "not edited");
             }
             catch
             {
                 return Request.CreateResponse(HttpStatusCode.OK, "Server Error");
             }
         }
+
         [Route("api/Badges/delete/{id}")]
         [HttpGet]
         public HttpResponseMessage Delete(int id)
         {
             try
             {
-                return Request.CreateResponse(HttpStatusCode.OK, BadgeService.DeleteBadge(id) ? "Deleted" : "not Deleted");
+                return Request.CreateResponse(HttpStatusCode.OK,
+                    BadgeService.DeleteBadge(id) ? "Deleted" : "not Deleted");
             }
             catch
             {
