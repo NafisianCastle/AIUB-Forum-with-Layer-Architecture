@@ -43,7 +43,7 @@ namespace BLL.Services
             }).ToList();
         }
 
-<<<<<<< HEAD
+
         public static List<CompanyModel> GetByCompanyName(string Company)
         {
             var config = new MapperConfiguration(cfg => cfg.CreateMap<Company, CompanyModel>());
@@ -52,8 +52,7 @@ namespace BLL.Services
             return data;
         }
 
-=======
->>>>>>> 64e7636676fb1ad0a0483d5edc1846a6c855688b
+
         public static void Add(CompanyModel c)
         {
             var config = new MapperConfiguration(cfg => { cfg.CreateMap<CompanyModel, Company>(); });

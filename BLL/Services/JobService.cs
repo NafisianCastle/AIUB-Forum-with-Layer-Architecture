@@ -39,7 +39,6 @@ namespace BLL.Services
             }).ToList();
         }
 
-<<<<<<< HEAD
         public static List<JobModel> GetByCompanyId(int ID)
         {
             var config = new MapperConfiguration(cfg => cfg.CreateMap<Job, JobModel>());
@@ -56,8 +55,6 @@ namespace BLL.Services
             return data;
         }
 
-=======
->>>>>>> 64e7636676fb1ad0a0483d5edc1846a6c855688b
         public static void Add(JobModel j)
         {
             var config = new MapperConfiguration(cfg => { cfg.CreateMap<JobModel, Job>(); });

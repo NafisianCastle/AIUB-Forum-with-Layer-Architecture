@@ -38,23 +38,10 @@ namespace DAL.Repo
 
         public bool Delete(int id)
         {
-<<<<<<< HEAD
-            var c = db.Jobs.FirstOrDefault(e => e.JobId == id);
-            if (c == null) return false;
-            db.Jobs.Remove(c);
-            return db.SaveChanges() != 0; ;
-        }  
-=======
             var c = _db.Jobs.FirstOrDefault(e => e.JobId == id);
-            if (c == null)
-            {
-                return false;
-            }
-
+            if (c == null) return false;
             _db.Jobs.Remove(c);
             return _db.SaveChanges() != 0;
-            ;
         }
->>>>>>> 64e7636676fb1ad0a0483d5edc1846a6c855688b
     }
 }
